@@ -7,6 +7,7 @@ mutable and has no duplicate elements.
 The order of elements in a set is undefined though it may consist of various elements.
 The major advantage of using a set, as opposed to a list, is that it has a highly optimized method for checking whether a specific element is contained in the set.]
     """
+import copy
 from functools import reduce
 s = {1, 2, 3, 4, 5, 6, 6}
 print(s)
@@ -127,3 +128,85 @@ arr1 = [2, 3, 3, 3, 6, 9, 9]
 x = []
 [x.append(i) for i in arr1 if i not in x]
 print(x)
+
+
+# =,Shallow_Copy & Deep Copy
+a = [1, 2, 3, 4]
+b = a
+print('Normal Assignment')
+print('Original List', id(a))
+print('Copy list', id(b))
+
+c = a.copy()
+print('Shallow copy')
+print('Original List', id(a))
+print('Copy List', id(c))
+
+a = [[1, 2, 3, 4], [9, 8, 7, 6]]
+d = a.copy()
+print('Nested List Shallow Copy')
+print('Original List', id(a))
+print('Copy List', id(d))
+
+print('Original Nested List', id(a[0]))
+print('Copy Nested List', id(d[0]))
+
+
+f = copy.deepcopy(a)
+print('Deep_copy')
+print('Original List', id(a))
+print('Copy List', id(f))
+
+print('Original Nested List', id(a[0]))
+print('Copy Nested List', id(f[0]))
+
+
+# Explanation DeepCopy & Shallow Copy
+# list --> address
+a--1000
+b = a
+b--1000
+This is normal Assignment
+
+# Shallow Copy
+a--1000
+b = a.copy()
+
+b--2000
+# Differect address is assigned here
+
+# Nested List
+a = [[1, 2, 3], [4, 5, 6]]
+a--1000
+a[0]---1010
+a[1]--1020
+
+b = a.copy()
+
+b---2000
+b[0]--1010
+b[1]--1020
+
+# List is assigned to different address in shallow copy but nested list stll
+# Referencing to the address point of original nested list
+
+
+# Deep Copy
+a---1000
+b = a.copy()
+b--2000
+
+# In single normal list, shallow copy and Deep copy is same
+
+# Nested list
+a--1000
+a[0]--1010
+a[1]--1020
+
+b = copy.deepcopy(a)
+b---2000
+b[0]---20010
+b[1]--20202
+
+# In deep copy nested list also assigned to new address like the oringal one,
+# This is the difference between shallow copy and deep Copy
