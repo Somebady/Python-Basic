@@ -53,11 +53,52 @@ print(Bank_account.roi)
 person1.revised_roi('13%')
 print(Bank_account.roi)
 
+# person1.roi = '20%'
+# print(person1.roi)
+
+print(Bank_account.roi)
+
+Bank_account.roi = '30%'
+print(Bank_account.roi)
+
+print(person1.roi)
+
+person3 = Bank_account('Akshay', 24, '9999')
+print(person3.roi)
+
+
 # Class variable exist even when the object is not created &
 # it is a class variable so it is same for all objects.
 
-# Class Method is called by both class & object of class, but it is standard or Geniune way to call
+# Class Method is called by both class & object of class, but it is standard or Genuine way to call
 # Class method only with class name
 
 
 # Access Specifier in python
+class Bank_account1():
+    roi = '10%'  # Class variable
+
+    def __init__(self, name, age, account_number, pin):
+        self.name = name  # By default it is public variable
+        self.age = age
+
+        # making Protected Variable
+        self._account_number = account_number  # Protected Variable
+
+        # making Private Varaible
+        self.__pin = pin
+
+    @classmethod  # Class Method
+    def revised_roi(cls, roi):
+        cls.roi = roi
+
+
+person4 = Bank_account1('Akshay Soni', 22, 9090, 123)
+print(dir(person4))
+print(person4._account_number)
+print(person4._Bank_account1__pin)
+
+person4._Bank_account1__pin = 456
+person4._account_number = 8080
+print(person4._account_number)
+print(person4._Bank_account1__pin)
