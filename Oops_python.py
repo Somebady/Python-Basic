@@ -102,3 +102,11 @@ person4._Bank_account1__pin = 456
 person4._account_number = 8080
 print(person4._account_number)
 print(person4._Bank_account1__pin)
+
+# Public -- It is accessible from all object of class
+# Protected -- it should only be accessible from object of inherited class only
+# Private -- it should never be directly accessible outside the class
+
+# Imp--In Python, Access specifier is not strongly mapped as in Java & C++, Here everything is accessible, even private variable
+# But as a sensible developer access specifier is indicate developer what is the accessibility of that variable
+# and he should follow this, but there is no restriction is present here, All of this is just a indication
