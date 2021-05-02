@@ -7,6 +7,7 @@ mutable and has no duplicate elements.
 The order of elements in a set is undefined though it may consist of various elements.
 The major advantage of using a set, as opposed to a list, is that it has a highly optimized method for checking whether a specific element is contained in the set.]
     """
+from datetime import datetime
 import copy
 from functools import reduce
 s = {1, 2, 3, 4, 5, 6, 6}
@@ -162,51 +163,69 @@ print('Copy Nested List', id(f[0]))
 
 
 # Explanation DeepCopy & Shallow Copy
-# list --> address
-a--1000
-b = a
-b--1000
-This is normal Assignment
+# # list --> address
+# a--1000
+# b = a
+# b--1000
+# This is normal Assignment
 
-# Shallow Copy
-a--1000
-b = a.copy()
+# # Shallow Copy
+# a--1000
+# b = a.copy()
 
-b--2000
-# Differect address is assigned here
+# b--2000
+# # Differect address is assigned here
 
-# Nested List
-a = [[1, 2, 3], [4, 5, 6]]
-a--1000
-a[0]---1010
-a[1]--1020
+# # Nested List
+# a = [[1, 2, 3], [4, 5, 6]]
+# a--1000
+# a[0]---1010
+# a[1]--1020
 
-b = a.copy()
+# b = a.copy()
 
-b---2000
-b[0]--1010
-b[1]--1020
+# b---2000
+# b[0]--1010
+# b[1]--1020
 
-# List is assigned to different address in shallow copy but nested list stll
-# Referencing to the address point of original nested list
+# # List is assigned to different address in shallow copy but nested list stll
+# # Referencing to the address point of original nested list
 
 
-# Deep Copy
-a---1000
-b = a.copy()
-b--2000
+# # Deep Copy
+# a---1000
+# b = a.copy()
+# b--2000
 
-# In single normal list, shallow copy and Deep copy is same
+# # In single normal list, shallow copy and Deep copy is same
 
-# Nested list
-a--1000
-a[0]--1010
-a[1]--1020
+# # Nested list
+# a--1000
+# a[0]--1010
+# a[1]--1020
 
-b = copy.deepcopy(a)
-b---2000
-b[0]---20010
-b[1]--20202
+# b = copy.deepcopy(a)
+# b---2000
+# b[0]---20010
+# b[1]--20202
 
 # In deep copy nested list also assigned to new address like the oringal one,
 # This is the difference between shallow copy and deep Copy
+
+
+# Iterables vs Iterators
+lst = []
+for i in range(0, 1000000):
+    lst.append(i)
+
+start_time = datetime.now()
+for i in lst:
+    pass
+# Here List is iterable--> we are able to iterate list.
+
+# Iterators
+
+lst1 = iter(lst)
+
+for i in lst1:
+    pass
