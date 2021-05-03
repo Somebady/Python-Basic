@@ -110,3 +110,44 @@ print(person4._Bank_account1__pin)
 # Imp--In Python, Access specifier is not strongly mapped as in Java & C++, Here everything is accessible, even private variable
 # But as a sensible developer access specifier is indicate developer what is the accessibility of that variable
 # and he should follow this, but there is no restriction is present here, All of this is just a indication
+
+
+# Exception Handling
+a = 10
+b = 10
+try:
+    x = a+b
+    y = a/b
+    z = 22
+except ZeroDivisionError as e:
+    print('Can not divide by Zero')
+except NameError as e:
+    print('Variable is not define', e)
+except Exception as e:
+    print('Exception', e)
+else:
+    # Else block will execute only when there was no exception genrate in the try block
+    print(x)
+    print(y)
+    print(z)
+finally:
+    print('Execution is done')
+    # Finally will execute always, either code raise exception or not
+    # Practice use of finally is when you open connection to database, but later on code raise exception so in finally block you will be able to
+    # to close the database connection
+
+
+# Custom Exceptions
+# Defining Custom Exception
+class MyException(Exception):
+    pass
+
+
+try:
+    age = int(input())
+    if age > 20:
+        print('valid')
+    else:
+        raise MyException  # raise my custom exception
+except MyException as e:
+    print('Not Eligible to Apply')

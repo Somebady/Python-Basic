@@ -215,7 +215,7 @@ print('Copy Nested List', id(f[0]))
 
 # Iterables vs Iterators
 lst = []
-for i in range(0, 1000000):
+for i in range(0, 10):
     lst.append(i)
 
 start_time = datetime.now()
@@ -229,3 +229,17 @@ lst1 = iter(lst)
 
 for i in lst1:
     pass
+
+
+# Assertion---Assert Statement
+# Assert statement to check if logical expression is true or false,
+# Program execute procees only if expressions true, else it will
+# Raise Assertion Error when it is false
+
+num = int(input())
+try:
+    assert num % 2 == 0
+    # only program came here,if above statement is true, else it will raise exception
+    print('it is even number')
+except Exception as e:
+    print('Please enter only even number')
