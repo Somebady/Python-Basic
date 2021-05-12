@@ -73,6 +73,8 @@ lst = [1, 2, 44, 43, 33]
 lst1 = [1, 2, 44, 43, 33]
 lst2 = [1, 2, 44, 43, 33]
 print(list(map(even, lst)))
+print('type', map(even, lst))
+print(map(even, lst))
 print(list(map(lambda a, b, c: a*b*c, lst, lst1, lst2)))
 
 # map(passing value to function present here one by one, Getting one by one values from here)
@@ -243,3 +245,14 @@ try:
     print('it is even number')
 except Exception as e:
     print('Please enter only even number')
+
+
+l1 = [1]
+l2 = [1, 2, 3, 4, 5, 6, 6]
+
+
+def f1():
+    return l1 or l2
+
+
+print(f1())

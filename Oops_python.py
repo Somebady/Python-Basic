@@ -171,6 +171,11 @@
 
 # Inheritance
 
+import collections
+import types
+import keyword
+
+
 class Emp():
     def __init__(self, name, age):
         self.name = name
@@ -227,3 +232,152 @@ class D(B, C):
 
 d1 = D()
 d1.assign('Akshay')
+
+
+# Iterators & Genrators
+
+list1 = [1, 2, 3, 4, 5, 8, 9, 0]
+for i in list1:  # we are able to iterate the list,so list is an iteratble object
+    print(i)
+
+list2 = iter(list1)  # By using this iter() fn we create iterator object
+print(type(list1))
+
+#Iterator is also in iterable
+for i in list1:
+    print(i)
+
+# another way to iterate iterator is using next() fn,
+# Difference between iterator and iterable  is :
+# 1. when we assign values to iterable object, all the values allocated at some memory location, so it stores in that memory location
+# 2.but in iterator, values are not assigned to memory location untill it get called,
+# 3. Iterator is more memory efficient , so when we have huge dataset then we use iterator instead of iterable object.
+
+# Genrators
+
+
+def square(x):
+    for i in x:
+        yield i*i
+        yield i+i
+
+
+x1 = square([5, 2, 3])
+print(x1)
+for i in x1:
+    print(i)
+# Difference Between Iterator & Generator
+# 1. To create an iterator we use iter fn.
+# 2. we create generator  we use fn along with yield keyword....
+# 3. generator use yield keyword
+# 4 generator in python helps us to write fast & compact Code
+# 5.python iterator is much more memory efficient
+
+print(issubclass(types.GeneratorType, collections.Iterator))
+
+# Python Decorators & Closures
+print('Python Decorators & Closures\n\n')
+
+
+def welcome1():
+    return 'welcome'
+
+
+wel = welcome1()  # fn Copy
+
+del welcome1
+print(wel)
+
+# Closures( fn inside a fn)
+print("Closures\n")
+
+
+def welcome():
+    msg = 'WelcomeClass'
+
+    def sub_welcome():
+        print('welcome SubClass')
+        print(msg)  # we use variable of parent fn here
+    return sub_welcome()
+
+
+welcome()
+# Inner fn is able to access variables of parent fn
+
+
+# Initial Decorators (instead of varaible we also use fn's)
+print(" Initial Decorator's\n")
+
+
+def welcome(func):  # pre-defined fn's
+    msg = 'WelcomeClass'
+
+    def sub_welcome():
+        print('welcome SubClass')
+        print(msg)  # we use variable of parent fn here
+        func('Executing Passed Fn i.e fn')
+    return sub_welcome()
+
+
+welcome(print)
+# Inner fn is able to access variables of parent fn
+
+# Decorators (passing custom fn)
+print("Decorator's\n")
+
+
+def welcome(func):
+    msg = 'WelcomeClass'
+
+    def sub_welcome():
+        print('welcome SubClass1')
+        print(msg)  # we use variable of parent fn here
+        func()
+    return sub_welcome()
+
+
+@welcome
+def another_fn():
+    print('Custom fn')
+
+
+# Class Method & Static Method
+class Hdfc():
+    bank_id = 12345  # Class Varaible &  staticVariable--Both are same
+
+    def __init__(self, name, age, salary):
+        self.name = name
+        self.age = age
+        self.salary = salary
+
+    @classmethod
+    def revise_bank_id(cls, id):  # Class Method
+        cls.bank_id = id
+
+    @staticmethod
+    def isadult(age):
+        return age > 18  # it is used to create utility & static method is not able to change/modify variables of class
+
+
+h1 = Hdfc('Akshay Soni', 23, 6000)
+print(h1.name, h1.salary, h1.age, h1.bank_id)
+Hdfc.revise_bank_id(98765)
+print(h1.bank_id)
+print(Hdfc.isadult(12))
+print(h1.isadult(h1.age))
+
+
+# Class variable or static variable same in python, both can be called with class name or object of that class
+# class method is created using decorator @classmethod, while static method is created using @staticmethod
+# Class method is able to change the variable of class, But static method won't be able to do that, we use static method as utility
+
+
+# Self
+self = 20
+print(self)
+
+print(keyword.kwlist)
+
+x = frozenset({'a': 10, 'b': 20, 'b': 30})
+for i in x:
+    print(i, x)
