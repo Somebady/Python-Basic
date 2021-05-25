@@ -1,6 +1,6 @@
 # Linked List
 
-
+# Made changes from local git command line
 class Node():
     def __init__(self, data):
         self.data = data
