@@ -105,7 +105,7 @@ def nPrime(n):
             print(i, end=",")
 
 
-nPrime(222)
+nPrime(20)
 
 # No of prime or not
 
@@ -124,6 +124,7 @@ def chk_prime(n: int) -> bool:
     return True
 
 
+print('Commit from Local')
 # print(chk_prime(104729))
 # print(78 % 6)
 # -------------------------------------------------------------------
