@@ -1,3 +1,4 @@
+# Modified by Personal Laptop
 def makeGood(s) -> str:
     stack = []
     # x=reduce(lambda a,b: a+b if abs(ord(a)-ord(b)) == 32 else '',s)
